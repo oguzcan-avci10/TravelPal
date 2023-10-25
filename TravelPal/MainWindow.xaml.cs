@@ -26,7 +26,9 @@ namespace TravelPal
         public MainWindow()
         {
             InitializeComponent();
-            //UserManager.Users.Add(new User("user", "user", Locations.Sweden));
+            UserManager.Users.Add(new User("first", "first"));
+            UserManager.Users.Add(new User("second", "second"));
+
         }
 
         private void Hyperlink_Click(object sender, RoutedEventArgs e)
@@ -35,5 +37,12 @@ namespace TravelPal
             registerWindow.Show();
             Close();
         }
+
+        //private void btnRegister_Click(object sender, RoutedEventArgs e)
+        //{
+        //    RegisterWindow registerWindow = new RegisterWindow();
+        //    registerWindow.Show();
+        //    Close();
+        //}
     }
 }

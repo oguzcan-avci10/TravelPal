@@ -25,13 +25,14 @@
             <RowDefinition Height="20"/>
         </Grid.RowDefinitions>
         <Label
-            Content="Enter info for signup"
+            Content="Registration Info"
             Grid.Column="1"
             Grid.ColumnSpan="3"
             Grid.Row="1"
             VerticalAlignment="Center"
             HorizontalAlignment="Center"
             FontSize="30"
+            FontWeight="Bold"
             FontFamily="Arial"/>
         <Label
             Content="Username"
@@ -41,5 +42,53 @@
             FontFamily="Arial"
             VerticalAlignment="Center"
             HorizontalAlignment="Center"/>
+
+        <TextBox
+            Name="txtUsername"
+            Grid.Column="2"
+            Grid.Row="2"
+            Height="25"
+            FontSize="14"
+            FontFamily="Arial"
+            VerticalContentAlignment="Center"
+            BorderBrush="MediumSlateBlue"
+            BorderThickness="1"/>
+        <Label
+            Content="Password"
+            Grid.Column="1"
+            Grid.Row="3"
+            FontSize="18"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            />
+        <TextBox
+            Name="txtPassword"
+            Grid.Column="2"
+            Grid.Row="3"
+            Height="25"
+            FontSize="14"
+            FontFamily="Arial"
+            VerticalContentAlignment="Center"
+            BorderBrush="MediumSlateBlue"
+            BorderThickness="1"/>
+
+        <Button
+            Name="btnRegister"
+            Content="Register"
+            Grid.Column="3"
+            Grid.Row="3"
+            Height="25"
+            Width="60"
+            FontSize="14"
+            FontFamily="Arial"
+            Margin="0,0,100,0"
+            BorderBrush="MediumSlateBlue"
+            BorderThickness="1" Click="btnRegister_Click"/>
+
+        <TextBlock
+            Grid.Row="4"
+            Grid.Column="1"
+            Name="txtUsersList"/>
+
     </Grid>
 </Window>
