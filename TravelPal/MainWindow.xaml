@@ -81,7 +81,7 @@
             />
 
         <Button
-            Name="btnLogin"
+            Name="btnSignIn"
             Grid.Column="3"
             Grid.Row="3"
             Content="Sign In"
@@ -92,7 +92,7 @@
             HorizontalAlignment="Left"
             Margin="50,0,0,0"
             BorderBrush="MediumSlateBlue"
-            BorderThickness="1"
+            BorderThickness="1" Click="btnSignIn_Click"
             />
 
         <!--<Label
@@ -132,5 +132,8 @@
         </Label>
 
         
+
+        
+
     </Grid>
 </Window>

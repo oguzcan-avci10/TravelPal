@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Xml.Linq;
 using TravelPal.Managers;
 using TravelPal.Models;
 using TravelPal.Views;
@@ -26,9 +27,8 @@ namespace TravelPal
         public MainWindow()
         {
             InitializeComponent();
-            UserManager.Users.Add(new User("first", "first"));
-            UserManager.Users.Add(new User("second", "second"));
 
+          
         }
 
         private void Hyperlink_Click(object sender, RoutedEventArgs e)
@@ -38,11 +38,35 @@ namespace TravelPal
             Close();
         }
 
-        //private void btnRegister_Click(object sender, RoutedEventArgs e)
-        //{
-        //    RegisterWindow registerWindow = new RegisterWindow();
-        //    registerWindow.Show();
-        //    Close();
-        //}
+        private void btnSignIn_Click(object sender, RoutedEventArgs e)
+        {
+            string userName = txtUsername.Text;
+            string passWord = txtPassword.Password;
+
+            bool isLoggedIn = UserManager.SignInUser(userName, passWord);
+
+            if(!isLoggedIn)
+            {
+                MessageBox.Show("Wrong username or password!");
+                CleanUI();
+            }
+            else
+            {
+                TravelWindow travelWindow = new TravelWindow(userName);
+                travelWindow.Show();
+                Close();
+            }
+
+
+        }
+        private void CleanUI()
+        {
+            txtUsername.Text = "";
+            txtPassword.Password = "";
+        }
+
+      
+      
     }
+    
 }

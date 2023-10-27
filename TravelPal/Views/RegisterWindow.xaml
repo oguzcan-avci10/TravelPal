@@ -90,5 +90,17 @@
             Grid.Column="1"
             Name="txtUsersList"/>
 
+        <Button
+            Content="Home"
+            Name="btnHome"
+            Grid.Column="1"
+            Grid.Row="4"
+            Height="40"
+            Width="60"
+            BorderBrush="MediumSlateBlue"
+            FontSize="14"
+            FontFamily="Arial" Click="btnHome_Click"
+            />
+
     </Grid>
 </Window>

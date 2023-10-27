@@ -34,8 +34,8 @@ namespace TravelPal.Views
 
             if (IsValidName(newUserName))
             {
-                User newUSer = new(newUserName, newUserPassword);
-                UserManager.Users.Add(newUSer);
+                User newUser = new User(newUserName, newUserPassword);
+                UserManager.Users.Add(newUser);
 
                 MainWindow mainWindow = new MainWindow();
                 mainWindow.Show();
@@ -65,8 +65,15 @@ namespace TravelPal.Views
                         return false;
                     }
                 }
-                return true;
+                return true; 
             }
+        }
+
+        private void btnHome_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow mainWindow = new();
+            mainWindow.Show();
+            Close();
         }
     }
 }
