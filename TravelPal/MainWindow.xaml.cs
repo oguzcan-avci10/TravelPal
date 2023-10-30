@@ -52,7 +52,7 @@ namespace TravelPal
             }
             else
             {
-                TravelWindow travelWindow = new TravelWindow(userName);
+                TravelWindow travelWindow = new TravelWindow();
                 travelWindow.Show();
                 Close();
             }

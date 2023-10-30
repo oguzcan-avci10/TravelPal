@@ -8,7 +8,7 @@ namespace TravelPal.Models
 {
     public class Vacation : Travel
     {
-        public bool AllInclusive { get; set; }
+        public required bool AllInclusive { get; set; }
 
         public string GetInfo()
         {

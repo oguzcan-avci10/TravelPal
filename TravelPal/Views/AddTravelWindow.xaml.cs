@@ -11,6 +11,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using TravelPal.Managers;
+using TravelPal.Models;
 
 namespace TravelPal.Views
 {
@@ -43,6 +45,7 @@ namespace TravelPal.Views
             {
                 lblAllinclusive.Visibility = Visibility.Visible;
                 checkAllinclusive.Visibility = Visibility.Visible;
+
                 lblMeeting.Visibility = Visibility.Hidden;
                 txtMeeting.Visibility = Visibility.Hidden;
 
@@ -62,13 +65,64 @@ namespace TravelPal.Views
         {
             if (cmbTravellers.SelectedItem == null || cmbDestination.SelectedItem == null || string.IsNullOrEmpty(txtCity.Text) || cmbTrip.SelectedItem == null)
             {
-                
-                
-                    MessageBox.Show("Input fields cannot be empty!");
-                
+                MessageBox.Show("Input fields cannot be empty!");
+                return;
             }
-        }
+            else
+            {
+                int travellers = (int)cmbTravellers.SelectedItem;
+                Countries destination = (Countries)cmbDestination.SelectedItem;
+                string city = txtCity.Text;
+                string trip = (string)cmbTrip.SelectedItem;
 
-       
+                if (trip == "Vacation")
+                {
+                    bool allInclusive = (bool)checkAllinclusive.IsChecked!;
+
+                    Vacation newVacation = new()
+                    {
+                        Travellers = travellers,
+                        DestinationCity = city,
+                        Country = destination,
+                        AllInclusive = allInclusive,
+                    };
+
+                    User? signedInUser = UserManager.SignedInUser as User;
+                    if(newVacation == null)
+                    {
+                        MessageBox.Show("Null Vacation");
+                    }
+                    signedInUser.Travels.Add(newVacation);
+
+                  
+                    
+                }
+                else if (trip == "Work trip")
+                { 
+                    string meetingDetails = txtMeeting.Text;
+
+                    WorkTrip newWorkTrip = new()
+                    {
+                        Travellers = travellers,
+                        DestinationCity = city,
+                        Country = destination,
+                        MeetingDetails = meetingDetails
+                    };
+
+                    User? signedInUser = UserManager.SignedInUser as User;
+
+                    signedInUser.Travels.Add(newWorkTrip);
+                }
+                else
+                {
+                    MessageBox.Show("That is not a valid trip");
+                }
+                TravelWindow travelWindow = new TravelWindow(); 
+                travelWindow.Show();
+                Close();
+            }
+
+           
+        }
     }
 }

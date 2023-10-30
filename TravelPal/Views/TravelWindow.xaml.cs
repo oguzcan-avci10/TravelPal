@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using TravelPal.Managers;
 
 namespace TravelPal.Views
 {
@@ -22,12 +23,7 @@ namespace TravelPal.Views
         public TravelWindow()
         {
             InitializeComponent();
-        }
-
-        public TravelWindow(string username)
-        {
-            InitializeComponent();
-            lblUser.Content = username;
+            lblUser.Content = UserManager.SignedInUser.Username;
             if(lstTravel.Items.Count == 0)
             {
                 lstTravel.Items.Add("---");
