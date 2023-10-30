@@ -28,6 +28,24 @@ namespace TravelPal.Views
         {
             InitializeComponent();
             lblUser.Content = username;
+            if(lstTravel.Items.Count == 0)
+            {
+                lstTravel.Items.Add("---");
+            }
+        }
+
+        private void btnSignOut_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow mainWindow = new MainWindow();
+            mainWindow.Show();
+            Close();
+        }
+
+        private void btnAddTravel_Click(object sender, RoutedEventArgs e)
+        {
+            AddTravelWindow addTravelWindow = new AddTravelWindow();
+            addTravelWindow.Show();
+            Close();
         }
     }
 }

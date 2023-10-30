@@ -4,10 +4,14 @@ namespace TravelPal.Models
 {
     public class Travel
     {
-        public string Destination { get; set; }
+        public string? DestinationCity { get; set; }
         public int Travellers { get; set; }
-        public DateTime StartDate { get; set; }
-        public DateTime EndDate { get; set; }
-        public int TravelDays { get; set; }
+        public Countries Country { get; set; }
+
+        // TODO: Städer som användaren ska kunna välja emellan
+        // Vacation eller WorkTrip
+        // TravelDetailsWindow
+        // Funktionalitet
+       
     }
 }

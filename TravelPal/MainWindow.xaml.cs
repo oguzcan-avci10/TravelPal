@@ -41,9 +41,9 @@ namespace TravelPal
         private void btnSignIn_Click(object sender, RoutedEventArgs e)
         {
             string userName = txtUsername.Text;
-            string passWord = txtPassword.Password;
+            string password = txtPassword.Password;
 
-            bool isLoggedIn = UserManager.SignInUser(userName, passWord);
+            bool isLoggedIn = UserManager.SignInUser(userName, password);
 
             if(!isLoggedIn)
             {
