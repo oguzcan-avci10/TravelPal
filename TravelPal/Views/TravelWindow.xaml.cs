@@ -23,7 +23,15 @@ namespace TravelPal.Views
     {
         public TravelWindow()
         {
+           
             InitializeComponent();
+
+            if (UserManager.SignedInUser is Admin)
+            {
+                btnInfo.Visibility = Visibility.Hidden;
+                btnAddTravel.Visibility = Visibility.Hidden;
+            }
+
             lblUser.Content= UserManager.SignedInUser.Username;
 
             if(UserManager.SignedInUser is User)
@@ -97,6 +105,11 @@ namespace TravelPal.Views
 
                 lstTravel.Items.Remove(selectedItem);
             }
+        }
+
+        private void btnInfo_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Click 'Add Travel' to add a new trip. Click 'Details' for more info about selected trip.");
         }
     }
 }

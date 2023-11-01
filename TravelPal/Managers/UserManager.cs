@@ -53,10 +53,7 @@ namespace TravelPal.Managers
                 return false;
             }
         }
-        //public static void RemoveUser(IUser user)
-        //{
-        //    Users.Remove(user); 
-        //}
+        
 
         private static bool ValidateUsername (string username)
         {
