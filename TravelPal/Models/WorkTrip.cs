@@ -10,9 +10,9 @@ namespace TravelPal.Models
     {
         public required string? MeetingDetails { get; set; }
 
-        public string Trip()
+        public override string GetInfo()
         {
-            return "";
+            return $"City: {DestinationCity}, Travellers: {Travellers}, Country: {Country}\n Details: {MeetingDetails}";
         }
     }
 }

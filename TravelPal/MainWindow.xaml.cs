@@ -44,8 +44,9 @@ namespace TravelPal
             string password = txtPassword.Password;
 
             bool isLoggedIn = UserManager.SignInUser(userName, password);
+            User? signedInUser = UserManager.SignedInUser as User; 
 
-            if(!isLoggedIn)
+            if (!isLoggedIn)
             {
                 MessageBox.Show("Wrong username or password!");
                 CleanUI();

@@ -13,9 +13,29 @@ namespace TravelPal.Managers
     {
         public static List<IUser> Users { get; set; } = new()
         {
-            new User("user", "user"),
-            new Admin("admin", "admin")
+            new User("user", "password")
+            {
+                Travels = new List<Travel>()
+                {
+                    new Vacation()
+                    {
+                        DestinationCity = "Stockholm",
+                        Travellers = 2,
+                        Country = Countries.Sweden,
+                        AllInclusive = true
+                    },
+                    new WorkTrip()
+                    {
+                        DestinationCity = "Milano",
+                        Travellers = 3,
+                        Country = Countries.Italy,
+                        MeetingDetails = "Meeting with a software developer company"
+                    }
+                }
+            },
+            new Admin("admin", "password")
         };
+
 
        public static IUser? SignedInUser { get; set; }
 
@@ -36,11 +56,6 @@ namespace TravelPal.Managers
         //public static void RemoveUser(IUser user)
         //{
         //    Users.Remove(user); 
-        //}
-
-        //public static bool UpdateUserName(IUser user, string updatedName)
-        //{
-
         //}
 
         private static bool ValidateUsername (string username)

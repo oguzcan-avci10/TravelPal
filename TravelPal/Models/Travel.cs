@@ -8,13 +8,18 @@ namespace TravelPal.Models
         public required int Travellers { get; set; }
         public required Countries Country { get; set; }
 
-        
+        public virtual string GetInfo()
+        {
+            return "";
+        }
 
         // TODO: Städer som användaren ska kunna välja emellan
         // Vacation eller WorkTrip
         // TravelDetailsWindow
         // Funktionalitet
         // Använd SignedInUser 
+
+        // Fyll i användarens traveluppgifter i travelwindow
 
     }
 }

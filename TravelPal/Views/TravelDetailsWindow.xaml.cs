@@ -11,6 +11,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using TravelPal.Managers;
+using TravelPal.Models;
 
 namespace TravelPal.Views
 {
@@ -19,9 +21,24 @@ namespace TravelPal.Views
     /// </summary>
     public partial class TravelDetailsWindow : Window
     {
-        public TravelDetailsWindow()
+        
+
+        public TravelDetailsWindow(Travel selectedTrip)
         {
             InitializeComponent();
+
+            txtDetails.Text = selectedTrip.GetInfo();
+            
+                
+        }
+
+        private void btnBack_Click(object sender, RoutedEventArgs e)
+        {
+            TravelWindow travelWindow = new TravelWindow();
+            travelWindow.Show();
+            Close();
+
+            //TODO: Fixa att listan inte försvinner
         }
     }
 }

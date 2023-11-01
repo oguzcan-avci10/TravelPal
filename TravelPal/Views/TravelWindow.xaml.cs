@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using TravelPal.Managers;
+using TravelPal.Models;
 
 namespace TravelPal.Views
 {
@@ -23,11 +24,35 @@ namespace TravelPal.Views
         public TravelWindow()
         {
             InitializeComponent();
-            lblUser.Content = UserManager.SignedInUser.Username;
-            if(lstTravel.Items.Count == 0)
+            lblUser.Content= UserManager.SignedInUser.Username;
+
+            if(UserManager.SignedInUser is User)
             {
-                lstTravel.Items.Add("---");
+                // En vanlig user... Ser sina resor
+                foreach (Travel trip in ((User)UserManager.SignedInUser).Travels)
+                {
+                    ListViewItem item = new ListViewItem();
+                    item.Content = trip.DestinationCity + " " + "(" + trip.GetType().Name.ToLower() + ")";
+                    item.Tag = trip;
+
+                    lstTravel.Items.Add(item);
+                }
             }
+            else if (UserManager.SignedInUser is Admin)
+            {
+                // En admin... Ser allas resor
+
+                List<Travel> allTravels = TravelManager.Travels;
+
+                foreach (Travel trip in allTravels)
+                {
+                    ListViewItem item = new ListViewItem();
+                    item.Content = trip.DestinationCity + " " + "(" + trip.GetType().Name.ToLower() + ")";
+                    item.Tag = trip;
+
+                    lstTravel.Items.Add(item);
+                }
+            }   
         }
 
         private void btnSignOut_Click(object sender, RoutedEventArgs e)
@@ -42,6 +67,36 @@ namespace TravelPal.Views
             AddTravelWindow addTravelWindow = new AddTravelWindow();
             addTravelWindow.Show();
             Close();
+        }
+
+        private void btnDetails_Click(object sender, RoutedEventArgs e) // TravelDetails om en specifik resa. TODO: Ta bort en vald resa
+        {
+            ListViewItem trip = (ListViewItem)lstTravel.SelectedItem;
+            Travel selectedTravel = (Travel)trip.Tag;
+            TravelDetailsWindow travelDetailsWindow = new TravelDetailsWindow(selectedTravel);
+            travelDetailsWindow.Show();
+            Close();
+        }
+
+        private void btnRemove_Click(object sender, RoutedEventArgs e)
+        {
+            ListViewItem selectedItem = (ListViewItem)lstTravel.SelectedItem;
+
+            if(selectedItem != null)
+            {
+                Travel selectedTravel = (Travel)selectedItem.Tag;
+
+                if(UserManager.SignedInUser is User)
+                {
+                    TravelManager.RemoveTravel(selectedTravel, (User)UserManager.SignedInUser);
+                }
+                else if(UserManager.SignedInUser is Admin)
+                {
+                    TravelManager.RemoveTravel(selectedTravel);
+                }
+
+                lstTravel.Items.Remove(selectedItem);
+            }
         }
     }
 }

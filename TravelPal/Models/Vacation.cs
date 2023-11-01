@@ -10,9 +10,9 @@ namespace TravelPal.Models
     {
         public required bool AllInclusive { get; set; }
 
-        public string GetInfo()
+        public override string GetInfo()
         {
-            return $"Destination {DestinationCity} with travellers {Travellers}. Is 'all inclusive' {AllInclusive}";
+            return $"Destination {DestinationCity} in {Country} with travellers {Travellers}. Is 'all inclusive' {AllInclusive}";
         }
     }
 }

@@ -63,6 +63,7 @@ namespace TravelPal.Views
 
         private void btnAddTravel_Click(object sender, RoutedEventArgs e)
         {
+            
             if (cmbTravellers.SelectedItem == null || cmbDestination.SelectedItem == null || string.IsNullOrEmpty(txtCity.Text) || cmbTrip.SelectedItem == null)
             {
                 MessageBox.Show("Input fields cannot be empty!");
@@ -88,16 +89,15 @@ namespace TravelPal.Views
                     };
 
                     User? signedInUser = UserManager.SignedInUser as User;
-                    if(newVacation == null)
-                    {
-                        MessageBox.Show("Null Vacation");
-                    }
-                    signedInUser.Travels.Add(newVacation);
 
-                  
-                    
+                    TravelManager.AddTravel(newVacation, signedInUser);
+
+                    TravelWindow travelWindow = new TravelWindow();
+                    travelWindow.Show();
+                    Close();
+
                 }
-                else if (trip == "Work trip")
+                else if (trip == "Work Trip")
                 { 
                     string meetingDetails = txtMeeting.Text;
 
@@ -111,15 +111,18 @@ namespace TravelPal.Views
 
                     User? signedInUser = UserManager.SignedInUser as User;
 
-                    signedInUser.Travels.Add(newWorkTrip);
+                    TravelManager.AddTravel(newWorkTrip, signedInUser); 
+                    
+
+                    TravelWindow window = new TravelWindow();   
+                    window.Show();
+                    Close();
                 }
                 else
                 {
                     MessageBox.Show("That is not a valid trip");
                 }
-                TravelWindow travelWindow = new TravelWindow(); 
-                travelWindow.Show();
-                Close();
+
             }
 
            
