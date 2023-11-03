@@ -36,6 +36,8 @@ namespace TravelPal.Managers
             new Admin("admin", "password")
         };
 
+      
+
 
        public static IUser? SignedInUser { get; set; }
 

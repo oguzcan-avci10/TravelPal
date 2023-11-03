@@ -90,6 +90,8 @@ namespace TravelPal.Views
 
                     User? signedInUser = UserManager.SignedInUser as User;
 
+
+
                     TravelManager.AddTravel(newVacation, signedInUser);
 
                     TravelWindow travelWindow = new TravelWindow();
@@ -111,8 +113,10 @@ namespace TravelPal.Views
 
                     User? signedInUser = UserManager.SignedInUser as User;
 
-                    TravelManager.AddTravel(newWorkTrip, signedInUser); 
+                    TravelManager.AddTravel(newWorkTrip, signedInUser);
+
                     
+
 
                     TravelWindow window = new TravelWindow();   
                     window.Show();

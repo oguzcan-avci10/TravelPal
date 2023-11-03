@@ -9,12 +9,26 @@ namespace TravelPal.Managers
 {
     public static class TravelManager
     {
-        public static List<Travel> Travels { get; set; } = UserManager.Users.Where(u => u.GetType() == typeof(User)).SelectMany(u => ((User)u).Travels).ToList();
-        
+        public static List<Travel> Travels { get; set; }
+
         public static void AddTravel(Travel travel, User user)
         {
             user.Travels.Add(travel);
+
             Travels.Add(travel);
+        }
+
+        public static void PopulateTravels()
+        {
+            Travels = new List<Travel>();
+
+            foreach(var user in UserManager.Users)
+            {
+                if(user is User)
+                {
+                    Travels.AddRange(((User)user).Travels);
+                }
+            }
         }
 
         public static void RemoveTravel(Travel travel)

@@ -79,11 +79,19 @@ namespace TravelPal.Views
 
         private void btnDetails_Click(object sender, RoutedEventArgs e) // TravelDetails om en specifik resa. TODO: Ta bort en vald resa
         {
-            ListViewItem trip = (ListViewItem)lstTravel.SelectedItem;
-            Travel selectedTravel = (Travel)trip.Tag;
-            TravelDetailsWindow travelDetailsWindow = new TravelDetailsWindow(selectedTravel);
-            travelDetailsWindow.Show();
-            Close();
+            if(lstTravel.SelectedItem == null)
+            {
+                MessageBox.Show("Please select a trip");
+            }
+            else
+            {
+                ListViewItem trip = (ListViewItem)lstTravel.SelectedItem;
+                Travel selectedTravel = (Travel)trip.Tag;
+                TravelDetailsWindow travelDetailsWindow = new TravelDetailsWindow(selectedTravel);
+                travelDetailsWindow.Show();
+                Close();
+            }
+           
         }
 
         private void btnRemove_Click(object sender, RoutedEventArgs e)
@@ -101,10 +109,12 @@ namespace TravelPal.Views
                 else if(UserManager.SignedInUser is Admin)
                 {
                     TravelManager.RemoveTravel(selectedTravel);
+                    
                 }
 
                 lstTravel.Items.Remove(selectedItem);
             }
+            
         }
 
         private void btnInfo_Click(object sender, RoutedEventArgs e)

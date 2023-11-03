@@ -6,6 +6,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
+using TravelPal.Managers;
 
 namespace TravelPal
 {
@@ -13,7 +14,11 @@ namespace TravelPal
     /// Interaction logic for App.xaml
     /// </summary>
     public partial class App : Application
-    {
-        
+    { 
+        public App()
+        {
+            TravelManager.PopulateTravels();
+        }
+
     }
 }

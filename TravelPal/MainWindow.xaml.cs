@@ -57,17 +57,11 @@ namespace TravelPal
                 travelWindow.Show();
                 Close();
             }
-
-
         }
         private void CleanUI()
         {
             txtUsername.Text = "";
             txtPassword.Password = "";
-        }
-
-      
-      
+        }      
     }
-    
 }
