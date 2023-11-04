@@ -77,11 +77,11 @@ namespace TravelPal.Views
             Close();
         }
 
-        private void btnDetails_Click(object sender, RoutedEventArgs e) // TravelDetails om en specifik resa. TODO: Ta bort en vald resa
+        private void btnDetails_Click(object sender, RoutedEventArgs e) 
         {
             if(lstTravel.SelectedItem == null)
             {
-                MessageBox.Show("Please select a trip");
+                MessageBox.Show("Please select a trip", "Warning");
             }
             else
             {
@@ -113,6 +113,10 @@ namespace TravelPal.Views
                 }
 
                 lstTravel.Items.Remove(selectedItem);
+            }
+            else
+            {
+                MessageBox.Show("Please select a trip", "Warning");
             }
             
         }

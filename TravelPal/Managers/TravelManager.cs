@@ -42,6 +42,7 @@ namespace TravelPal.Managers
                         if(userTravel == travel)
                         {
                             ((User)user).Travels.Remove(travel);
+                            Travels.Remove(travel);
 
                             return;
                         }

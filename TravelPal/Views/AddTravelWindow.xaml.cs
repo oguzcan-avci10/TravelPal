@@ -101,35 +101,32 @@ namespace TravelPal.Views
                 }
                 else if (trip == "Work Trip")
                 { 
-                    string meetingDetails = txtMeeting.Text;
-
-                    WorkTrip newWorkTrip = new()
-                    {
-                        Travellers = travellers,
-                        DestinationCity = city,
-                        Country = destination,
-                        MeetingDetails = meetingDetails
-                    };
-
-                    User? signedInUser = UserManager.SignedInUser as User;
-
-                    TravelManager.AddTravel(newWorkTrip, signedInUser);
-
                     
+                    string meetingDetails = txtMeeting.Text;
+                    if (string.IsNullOrEmpty(meetingDetails)) 
+                    {
+                        MessageBox.Show("Must add meeting details", "Warning");
+                    }
+                    else
+                    {
+                        WorkTrip newWorkTrip = new()
+                        {
+                            Travellers = travellers,
+                            DestinationCity = city,
+                            Country = destination,
+                            MeetingDetails = meetingDetails
+                        };
 
+                        User? signedInUser = UserManager.SignedInUser as User;
 
-                    TravelWindow window = new TravelWindow();   
-                    window.Show();
-                    Close();
+                        TravelManager.AddTravel(newWorkTrip, signedInUser);
+
+                        TravelWindow window = new TravelWindow();
+                        window.Show();
+                        Close();
+                    }  
                 }
-                else
-                {
-                    MessageBox.Show("That is not a valid trip");
-                }
-
-            }
-
-           
+            }           
         }
     }
 }

@@ -36,6 +36,7 @@ namespace TravelPal.Views
             {
                 User newUser = new User(newUserName, newUserPassword);
                 UserManager.Users.Add(newUser);
+                MessageBox.Show($"Registered new user with name {newUserName}", "Succes");
 
                 MainWindow mainWindow = new MainWindow();
                 mainWindow.Show();

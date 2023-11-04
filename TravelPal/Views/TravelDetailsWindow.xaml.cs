@@ -38,7 +38,6 @@ namespace TravelPal.Views
             travelWindow.Show();
             Close();
 
-            //TODO: Fixa att listan inte försvinner
         }
     }
 }

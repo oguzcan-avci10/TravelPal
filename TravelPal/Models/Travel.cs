@@ -13,13 +13,5 @@ namespace TravelPal.Models
             return "";
         }
 
-        // TODO: Städer som användaren ska kunna välja emellan
-        // Vacation eller WorkTrip
-        // TravelDetailsWindow
-        // Funktionalitet
-        // Använd SignedInUser 
-
-        // Fyll i användarens traveluppgifter i travelwindow
-
     }
 }
